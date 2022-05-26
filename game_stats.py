@@ -7,6 +7,8 @@ class GameStats():
 		self.settings = ai_game.settings
 		self.reset_stats()
 
+		self.game_active = True
+
 	def reset_stats(self):
 		"""Itializes statistics that change guring the game"""
 
