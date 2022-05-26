@@ -12,6 +12,7 @@ import pygame
 class AlienInvasion:
 	"""Class for control resource game"""
 
+
 	def __init__(self):
 		"""Initializing the game and creating game resources"""
 
@@ -52,6 +53,7 @@ class AlienInvasion:
 			elif event.type == pygame.KEYUP:
 				self._check_keyup_events(event)
 
+
 	def _check_keydown_events(self, event):
 		"""Reacts on keydown"""
 
@@ -63,6 +65,7 @@ class AlienInvasion:
 			sys.exit()
 		elif event.key == pygame.K_SPACE:
 			self._fire_bullet()
+
 
 	def _check_keyup_events(self, event):
 		"""Reacts on keyup"""
@@ -79,6 +82,7 @@ class AlienInvasion:
 		if len(self.bullets) < self.settings.bullet_allowed:
 			new_bullet = Bullet(self)
 			self.bullets.add(new_bullet)
+
 
 	def _update_bullets(self):
 		"""Update position bullets and deleted old"""
@@ -110,6 +114,17 @@ class AlienInvasion:
 
 		if pygame.sprite.spritecollideany(self.ship, self.aliens):
 			self._ship_hit()
+		self._check_aliens_bottom()
+
+
+	def _check_aliens_bottom(self):
+		"""Checks if aliens have reached the bottom of the screen"""
+
+		screen_rect = self.screen.get_rect()
+		for alien in self.aliens.sprites():
+			if alien.rect.bottom >= screen_rect.bottom:
+				self._ship_hit()
+				break
 
 
 	def _ship_hit(self):
@@ -142,6 +157,7 @@ class AlienInvasion:
 			for alien_number in range(number_alien_x):
 				self._create_alien(alien_number, row_number)
 	
+
 	def _create_alien(self, alien_number, row_number):
 		"""Created alien and move him in row"""
 
@@ -152,6 +168,7 @@ class AlienInvasion:
 		alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
 		self.aliens.add(alien)
 
+
 	def _check_fleet_ebges(self):
 		"""React when reaching the edge of the screen"""
 
@@ -160,6 +177,7 @@ class AlienInvasion:
 				self._change_fleet_direction()
 				break
 
+
 	def _change_fleet_direction(self):
 		"""Lover the gleet and changes direction"""
 
@@ -167,6 +185,7 @@ class AlienInvasion:
 			alien.rect.y += self.settings.fleet_drop_speed
 
 		self.settings.fleet_direction *= -1
+
 
 	def _update_screen(self):
 
