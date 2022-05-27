@@ -2,7 +2,7 @@ import pygame.font
 
 class Button():
 	
-	def __init__(self, arg):
+	def __init__(self, ai_game, msg):
 		"""Initializing attributes button"""
 
 		self.screen = ai_game.screen
@@ -23,7 +23,7 @@ class Button():
 		"""Convert msg to a rectangle and aligns the text to the center"""
 
 		self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
-		self.msg_image_rect = self.msg.get_rect()
+		self.msg_image_rect = self.msg_image.get_rect()
 		self.msg_image_rect.center = self.rect.center
 
 

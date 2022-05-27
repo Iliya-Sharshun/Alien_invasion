@@ -6,6 +6,7 @@ from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from button import Button
 
 import pygame
 
@@ -30,6 +31,8 @@ class AlienInvasion:
 		self.aliens = pygame.sprite.Group()
 
 		self._create_fleet()
+
+		self.play_button = Button(self, 'Play')
 		
 
 	def run_game(self):
@@ -202,7 +205,11 @@ class AlienInvasion:
 			bullet.draw_bullet()
 		self.aliens.draw(self.screen)
 
+		if not self.stats.game_active:
+			self.play_button.draw_button()
+
 		pygame.display.flip()
+
 
 if __name__ == '__main__':
 	ai = AlienInvasion()
