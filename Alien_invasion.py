@@ -67,7 +67,14 @@ class AlienInvasion:
 		"""Run new game when play button has been down"""
 
 		if self.play_button.rect.collidepoint(mouse_pos):
+			self.stats.reset_stats()
 			self.stats.game_active = True
+
+			self.aliens.empty()
+			self.bullets.empty()
+
+			self._create_fleet()
+			self.ship.center_ship()
 
 
 	def _check_keydown_events(self, event):
