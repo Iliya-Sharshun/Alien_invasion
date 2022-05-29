@@ -58,26 +58,26 @@ class AlienInvasion:
 				self._check_keydown_events(event)
 			elif event.type == pygame.KEYUP:
 				self._check_keyup_events(event)
-			elif event.type == pygame.MOUSEBUTTONDOWN:
-				mouse_pos = pygame.mouse.get_pos()
-				self._check_play_button(mouse_pos)
+			
 
-
-	def _check_play_button(self, mouse_pos):
+	def _check_play_button(self):
 		"""Run new game when play button has been down"""
 
-		button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-		if button_clicked and not self.stats.game_active:
-			self.stats.reset_stats()
-			self.stats.game_active = True
+		if not self.stats.game_active:
+			start_game()
+			
+	def start_game(self):
+		
+		self.stats.reset_stats()
+		self.stats.game_active = True
 
-			self.aliens.empty()
-			self.bullets.empty()
+		self.aliens.empty()
+		self.bullets.empty()
 
-			self._create_fleet()
-			self.ship.center_ship()
+		self._create_fleet()
+		self.ship.center_ship()
 
-			pygame.mouse.set_visible(False)
+		pygame.mouse.set_visible(False)
 
 
 	def _check_keydown_events(self, event):
@@ -87,6 +87,8 @@ class AlienInvasion:
 			self.ship.moving_right = True
 		elif event.key == pygame.K_LEFT:
 			self.ship.moving_left = True
+		elif event.key == pygame.K_p:
+			self.start_game()
 		elif event.key == pygame.K_q:
 			sys.exit()
 		elif event.key == pygame.K_SPACE:
