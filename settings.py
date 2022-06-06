@@ -10,7 +10,7 @@ class Settings():
 		
 		self.ship_limit = 3
 
-		self.bullet_width = 3000
+		self.bullet_width = 30
 		self.bullet_height = 15
 		self.bullet_color = (60, 60, 60)
 		self.bullet_allowed = 3
@@ -29,6 +29,7 @@ class Settings():
 		self.bullet_speed = 3.0
 		self.alien_speed = 1.0
 		self.fleet_direction = 1
+		self.alien_point = 50
 
 	def increase_speed(self):
 		"""Increasing speed settings"""

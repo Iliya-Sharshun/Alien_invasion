@@ -139,6 +139,10 @@ class AlienInvasion:
 			self._create_fleet()
 			self.settings.increase_speed()
 
+		if collision:
+			self.stats.score += self.settings.alien_point
+			self.sb.prep_score()
+
 
 	def _update_aliens(self):
 		"""Update position alien in fleet"""

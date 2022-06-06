@@ -9,8 +9,8 @@ class GameStats():
 
 		self.game_active = False
 
-
 	def reset_stats(self):
 		"""Itializes statistics that change guring the game"""
 
 		self.ship_left = self.settings.ship_limit
+		self.score = 0
