@@ -73,10 +73,12 @@ class AlienInvasion:
 			self.settings.intialize_dynamic_settings()
 			self.start_game()
 			
+
 	def start_game(self):
 		
 		self.stats.reset_stats()
 		self.stats.game_active = True
+		self.sb.prep_score()
 
 		self.aliens.empty()
 		self.bullets.empty()
