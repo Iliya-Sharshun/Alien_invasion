@@ -142,7 +142,8 @@ class AlienInvasion:
 			self.settings.increase_speed()
 
 		if collision:
-			self.stats.score += self.settings.alien_point
+			for aliens in collision.values():
+				self.stats.score += self.settings.alien_point * len(aliens)
 			self.sb.prep_score()
 
 
