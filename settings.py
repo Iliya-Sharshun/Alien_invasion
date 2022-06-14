@@ -22,6 +22,7 @@ class Settings():
 		self.speedup_scale = 1.1
 		self.score_scale = 1.5
 		self.intialize_dynamic_settings()
+		self.high_score = 0
 
 	def intialize_dynamic_settings(self):
 		"""Initializing  settings who will be change in game time"""
